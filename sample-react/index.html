@@ -11,13 +11,52 @@
 <body>
   <div id="root"></div>
   <script type="text/babel">
+    function Header({ title }) {
+      return (
+        <header style={{ backgroundColor: '#f8f8f8', padding: '10px' }}>
+          <h2>{title}</h2>
+        </header>
+      );
+    }
+
+    function Content({ children }) {
+      return (
+        <main style={{ padding: '10px' }}>
+          {children}
+        </main>
+      );
+    }
+
+    function Footer() {
+      return (
+        <footer style={{ backgroundColor: '#f8f8f8', padding: '10px', marginTop: '20px' }}>
+          <small>© 2025 My Company</small>
+        </footer>
+      );
+    }
+
+    function Button({ label, onClick }) {
+      return (
+        <button onClick={onClick} style={{ padding: '8px 16px', margin: '5px' }}>
+          {label}
+        </button>
+      );
+    }
+
     function App() {
+      const handleClick = () => alert('Button clicked!');
       return (
         <div>
-          <h1>Hello, React!</h1>
+          <Header title="Welcome to My App" />
+          <Content>
+            <p>This is some sample content.</p>
+            <Button label="Click Me" onClick={handleClick} />
+          </Content>
+          <Footer />
         </div>
       );
     }
+
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>
